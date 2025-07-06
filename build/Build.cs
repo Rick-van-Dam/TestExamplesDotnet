@@ -10,7 +10,6 @@ using Nuke.Common.Tooling;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Utilities.Collections;
 using static Nuke.Common.EnvironmentInfo;
-using static Nuke.Common.IO.FileSystemTasks;
 using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
@@ -65,9 +64,7 @@ class Build : NukeBuild
                 .EnableNoRestore()
                 .SetConfiguration(Configuration)
                 .SetProjectFile(Solution)
-                .SetProcessArgumentConfigurator(x => x
-                    .Add("-warnaserror")
-                    .Add("-warnnotaserror:CS0618,CS0612")));
+                .SetProcessAdditionalArguments("-warnaserror", "-warnnotaserror:CS0618,CS0612"));
         });
 
     Target Test => _ => _
