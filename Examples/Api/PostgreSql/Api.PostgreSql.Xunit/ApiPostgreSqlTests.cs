@@ -25,7 +25,7 @@ public class ApiPostgreSqlTests
         });
 
         //Act
-        var result = await _sut.CreateClient().GetFromJsonAsync<Blog[]>("blogs");
+        var result = await _sut.CreateClient().GetFromJsonAsync<Blog[]>("blogs", cancellationToken: TestContext.Current.CancellationToken);
 
         //Assert
         result.Should().BeEquivalentTo(new[]

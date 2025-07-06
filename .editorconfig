@@ -174,3 +174,6 @@ dotnet_diagnostic.ca1812.severity = none
 dotnet_diagnostic.ca1819.severity = none
 
 dotnet_diagnostic.ca1014.severity = none
+
+# Because an application's API isn't typically referenced from outside the assembly, types can be made internal
+dotnet_diagnostic.CA1515.severity = none
