@@ -6,6 +6,6 @@ public interface IDatabase
 {
     string ConnectionString { get; }
 
-    public void EnsureInitialized(IHost host);
-    public Task Clean();
+    void EnsureInitialized(IHost host);
+    Task Clean();
 }

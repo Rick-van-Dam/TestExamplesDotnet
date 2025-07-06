@@ -17,7 +17,7 @@ public static class MsSqlContainerExtensions
         var connectionString = ParseConnectionString(container.GetConnectionString());
 
         return await container
-            .ExecAsync(new[] { "/opt/mssql-tools/bin/sqlcmd", "-b", "-r", "1", "-U", connectionString.UserId, "-P", connectionString.Password, "-d", database, "-i", scriptFilePath, "-I" }, ct)
+            .ExecAsync(new[] { "/opt/mssql-tools18/bin/sqlcmd", "-b", "-r", "1", "-U", connectionString.UserId, "-P", connectionString.Password, "-d", database, "-i", scriptFilePath, "-I", "-C" }, ct)
             .ConfigureAwait(false);
     }
 

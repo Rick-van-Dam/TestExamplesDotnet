@@ -31,7 +31,7 @@ public static class TestJwtGenerator
 
     public static IServiceCollection ConfigureTestJwt(this IServiceCollection services)
     {
-        services.RemoveAll(typeof(IConfigureOptions<JwtBearerOptions>)); // Remove any already configured jwt bearer options configurators as we want to be in control of this in the tests.
+        services.RemoveAll<IConfigureOptions<JwtBearerOptions>>(); // Remove any already configured jwt bearer options configurators as we want to be in control of this in the tests.
         services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
         {
             options.Configuration = new OpenIdConnectConfiguration
