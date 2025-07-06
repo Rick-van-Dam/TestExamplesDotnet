@@ -23,7 +23,7 @@ public class ApiJwtAuthTests : TestBase
         var result = await Sut.CreateClient().GetAsync("blogs");
 
         //Assert
-        result.Should().HaveStatusCode(HttpStatusCode.Unauthorized);
+        result.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
 
     [Test]
@@ -42,7 +42,7 @@ public class ApiJwtAuthTests : TestBase
         var result = await Sut.CreateAuthorizedClient().GetAsync("blogs");
 
         //Assert
-        result.Should().HaveStatusCode(HttpStatusCode.Forbidden);
+        result.StatusCode.Should().Be(HttpStatusCode.Forbidden);
     }
 
     [Test]
@@ -61,7 +61,7 @@ public class ApiJwtAuthTests : TestBase
         var result = await Sut.CreateAuthorizedClient(new Claim("SpecialPermission", string.Empty)).GetAsync("blogs");
 
         //Assert
-        result.Should().HaveStatusCode(HttpStatusCode.OK);
+        result.StatusCode.Should().Be(HttpStatusCode.OK);
         var blogs = await result.Content.ReadFromJsonAsync<Blog[]>();
 
         blogs.Should().BeEquivalentTo(new[]
