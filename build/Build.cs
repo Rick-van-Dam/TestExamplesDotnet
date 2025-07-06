@@ -58,6 +58,7 @@ class Build : NukeBuild
 
     Target Compile => _ => _
         .DependsOn(Restore)
+        .After(VerifyStyle)
         .Executes(() =>
         {
             DotNetBuild(c => c
